@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+            <meta name="google" content="notranslate">
+            <meta http-equiv="Content-Language" content="en">
+    
+    
+    <title>PhotoFile - Image to PDF Converter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/PhotoFile/css/styles.css">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/PhotoFile/Favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/PhotoFile/Favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/PhotoFile/Favicon/favicon-16x16.png">
+<link rel="manifest" href="/PhotoFile/Favicon/site.webmanifest">
+<link rel="mask-icon" href="/PhotoFile/Favicon/safari-pinned-tab.svg" color="#505a9a">
+<meta name="msapplication-TileColor" content="#ffe868">
+<meta name="theme-color" content="#ffe868">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+</head>
+<body>
+    <header>
+        <img data-src="/PhotoFile/assets/logo/PhotoFile.png" alt="PhotoFile Logo" class="lazy-load logo">
+        <p>Add images to convert them into a PDF</p>
+    </header>
+    <div class="container">
+        <div class="refresh-button-container">
+            <button id="refreshButton" class="btn btn-light"><i class="bi bi-arrow-clockwise"></i></button>
+        </div>
+        <div class="upload-section">
+            <div id="fileSelectContainer">
+                <div class="plus-icon-container">
+                    <i class="bi bi-plus-circle-fill"></i>
+                </div>
+                <p class="choose-file-text">Choose File</p>
+                <input type="file" id="imageUpload" accept="image/*" multiple>
+            </div>
+            <div id="imageCountContainer" style="display: none;">
+                <p id="imageCount">Added 0 image(s)</p>
+            </div>
+            <input type="text" id="fileName" placeholder="Enter file name" class="form-control" />
+            <button id="convertButton" class="btn btn-primary">Convert to PDF</button>
+            <div id="loader" class="loader" style="display: none;"></div>
+        </div>
+        <div id="pdfPreview" style="display: none;">
+            <div id="pdfControls">
+                <button id="prevPage" class="btn btn-secondary"><i class="bi bi-arrow-left"></i></button>
+                <span id="pageNum"></span> / <span id="pageCount"></span>
+                <button id="nextPage" class="btn btn-secondary"><i class="bi bi-arrow-right"></i></button>
+            </div>
+            <canvas id="pdfCanvas"></canvas>
+        </div>
+        <a id="downloadLink" class="btn btn-success" style="display: none;"><i class="bi bi-download"></i> Download PDF</a>
+        <div class="info">
+            <p>PhotoFile is a tool to convert your images into PDF files effortlessly. Add your images, name your file, and convert it with a single click.</p>
+        </div>
+    </div>
+    <footer>
+        <img data-src="/PhotoFile/assets/logo/VWSworkspace.png" alt="Footer Logo" class="lazy-load footer-logo">
+        <p>© 2024 PhotoFile. <a href="#"></a></p>
+    </footer>
+
+    <!-- Custom Popup Modal -->
+    <div id="alertModal" class="modal fade" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="alertModalLabel">Alert</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="alertMessage">Please select at least one image.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="/PhotoFile/js/script.js"></script>
+         <script>
+       window.addEventListener('load', () => {
+         registerSW();
+       });
+    
+       // Register the Service Worker
+       async function registerSW() {
+         if ('serviceWorker' in navigator) {
+           try {
+             await navigator
+               .serviceWorker
+               .register('/PhotoFile/js/serviceworker.js');
+           }
+           catch (e) {
+             console.log('SW registration failed');
+           }
+         }
+       }
+     </script>
+</body>
+</html>
