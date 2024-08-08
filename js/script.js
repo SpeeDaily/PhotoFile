@@ -175,6 +175,61 @@ document.getElementById('refreshButton').addEventListener('click', () => {
     location.reload();
 });
 
+  // Disable right-click context menu globally
+  document.addEventListener('contextmenu', function(event) {
+    event.preventDefault();
+  });
+
+  // Allow text selection and right-click for input fields
+  document.querySelectorAll('input, textarea').forEach(function(element) {
+    element.addEventListener('contextmenu', function(event) {
+      event.stopPropagation(); // Allow right-click on input fields
+    });
+
+    element.onselectstart = function(event) {
+      event.stopPropagation(); // Allow text selection on input fields
+    };
+
+    element.onmousedown = function(event) {
+      event.stopPropagation(); // Allow mouse interactions on input fields
+    };
+  });
+
+  // Disable selection globally except for input fields
+  window.onload = function() {
+    document.body.onselectstart = function(event) {
+      return event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA';
+    };
+
+    document.body.onmousedown = function(event) {
+      return event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA';
+    };
+  };
+
+  // Disable keyboard shortcuts globally but allow typing in input fields
+  document.addEventListener('keydown', function(event) {
+    const isInput = event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA';
+    
+    // Prevent certain shortcuts only when not in input fields
+    if (!isInput) {
+      // Prevent Ctrl+C (copy)
+      if (event.ctrlKey && event.key === 'c') {
+        event.preventDefault();
+      }
+      // Prevent Ctrl+U (view page source)
+      if (event.ctrlKey && event.key === 'u') {
+        event.preventDefault();
+      }
+      // Prevent Ctrl+S (save page)
+      if (event.ctrlKey && event.key === 's') {
+        event.preventDefault();
+      }
+      // Prevent Ctrl+P (print)
+      if (event.ctrlKey && event.key === 'p') {
+        event.preventDefault();
+      }
+    }
+  });
 
 
 
