@@ -1,6 +1,6 @@
 {
-  "name": "PhotoFile",
-  "short_name": "VWS Workspace",
+  "name": "VWS Workspace",
+  "short_name": "PhotoFile",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#fff",
