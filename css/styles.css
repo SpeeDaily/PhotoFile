@@ -1,0 +1,185 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+}
+
+header img {
+    height: 50px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+header p {
+    font-size: 14px;
+    color: #666;
+}
+
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 90%;
+    max-width: 500px;
+    animation: slideIn 0.5s ease-in-out;
+}
+
+.upload-section {
+    margin-bottom: 20px;
+}
+
+#fileSelectContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.plus-icon-container {
+    width: 60px;
+    height: 60px;
+    background-color: #007BFF;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.plus-icon-container i {
+    color: white;
+    font-size: 30px;
+}
+
+.choose-file-text {
+    margin-bottom: 10px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+input[type="text"] {
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+button, #downloadLink {
+    width: 100%;
+    margin-top: 20px;
+    padding: 15px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.loader {
+    border: 8px solid #A7A7A7;
+    border-radius: 50%;
+    border-top: 8px solid #3972FF;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#pdfPreview {
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+#pdfControls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    
+}
+
+canvas {
+    width: 100%;
+    height: auto;
+}
+
+.info {
+    margin-top: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+}
+
+footer img {
+    height: 40px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+footer p {
+    font-size: 14px;
+}
+
+footer a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-20px); }
+    to { transform: translateY(0); }
+}
+
+.refresh-button-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+}
+
+.refresh-button-container button {
+    font-size: 20px;
+}
+
+#alertModal .modal-content {
+    border-radius: 10px;
+}
+
+#alertModal .modal-header {
+    border-bottom: none;
+}
+
+#alertModal .modal-body {
+    font-size: 16px;
+    text-align: center;
+}
+
+#alertModal .modal-footer {
+    border-top: none;
+    justify-content: center;
+}
